@@ -3,11 +3,6 @@
 LaTeX author support files for IMS journal: 
 [The Annals of Applied Probability (AAP)](https://www.imstat.org/journals-and-publications/annals-of-applied-probability/)
 
-
-## Before you continue
-
-This is very early **DRAFT** - everything may change. Use at your own risk!
-
 ## Contents
 
 The following files are given in the repository (or directly in `.zip` archive):
