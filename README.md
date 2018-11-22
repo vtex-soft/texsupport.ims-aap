@@ -13,6 +13,7 @@ The following files are given in the repository (or directly in `.zip` archive):
 -   `aap-sample.pdf` - instructions for the preparation of a
     camera-ready paper in LaTeX. This document contains useful information regarding the structure 
     of your document, proper tagging style, layout features, etc;
+-   `figure1.eps`, `figure1.pdf` - sample figures for `aap-sample.pdf`;
 -   `aap-sample.tex` - source file for the instructions paper `aap-sample.pdf`;
 -   `acmtrans-ims.bst`, `imsart-nameyear.bst`, `imsart-number.bst` - BibTeX styles to prepare bibliography file.
     More information can be found [here](http://www.bibtex.org/Using/) 
