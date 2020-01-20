@@ -26,7 +26,7 @@
 %%   International Society for Bayesian Analysis
 %%
 %% Macros written by Vytas Statulevicius, VTeX, Lithuania
-%% Maintained by Deimantas Galcius, VTeX, Lithuania
+%% Maintained by TeX group members, VTeX, Lithuania
 %% for Institute of Mathematical Statistics, U.S.A.
 %% Please submit bugs or your comments to latex-support@vtex.lt
 %%
@@ -69,7 +69,7 @@
 % Requires Latex2e, ver.2000.06
 
 \def\imsfmt@name{imsart}
-\def\imsfmt@version{2018/06/27}
+\def\imsfmt@version{2020/01/20}
 
 \ProvidesFile{imsart.sty}
         [\imsfmt@version IMS article style (VS)]
@@ -88,6 +88,10 @@
 
 
 % General options:
+
+% prints out \bid{doi={}}
+\newif\if@print@bid@doi \@print@bid@doifalse
+\DeclareOption{printbiddoi}{\global\@print@bid@doitrue}
 
 % Put keywords as footnote
 \newif\if@keywordsasfootnote
@@ -225,63 +229,63 @@
 % Options for the IMS journals:
 
 \DeclareOption{aap}{%
-   \def\journal@id{-aap}
-   \def\journal@name{Submitted to the Annals of Applied Probability }
-   \def\journal@url{http://www.imstat.org/aap/}
-   \set@page@layout{30pc}{550pt}% 30pc * 46 line
-   \@twosidetrue
-   \input{leqno.clo}% formula numbers at left
-   \@amsmath@leqnotrue
-   \@historyasfootnotetrue
-   \@keywordsasfootnotetrue
-   \@addressatendtrue
-   \@imslayouttrue
-   \@autosecdottrue
+    \def\journal@id{-aap}
+    \def\journal@name{Submitted to the Annals of Applied Probability }
+    \def\journal@url{http://www.imstat.org/aap/}
+    \set@page@layout{405bp}{646bp}%
+    \@twosidetrue
+    \input{leqno.clo}% formula numbers at left
+    \@amsmath@leqnotrue
+    \@historyasfootnotetrue
+    \@keywordsasfootnotetrue
+    \@imslayouttrue
+    \@autosecdottrue
+    \@print@bid@doitrue
 }
 
 \DeclareOption{aop}{%
-   \def\journal@id{-aop}
-   \def\journal@name{Submitted to the  Annals of Probability }
-   \def\journal@url{http://www.imstat.org/aop/}
-   \set@page@layout{30pc}{550pt}% 30pc * 46 line
-   \@twosidetrue
-   \input{leqno.clo}% formula numbers at left
-   \@amsmath@leqnotrue
-   \@historyasfootnotetrue
-   \@keywordsasfootnotetrue
-   \@addressatendtrue
-   \@imslayouttrue
-   \@autosecdottrue
+    \def\journal@id{-aop}
+    \def\journal@name{Submitted to the  Annals of Probability }
+    \def\journal@url{http://www.imstat.org/aop/}
+    \set@page@layout{405bp}{646bp}%
+    \@twosidetrue
+    \input{leqno.clo}% formula numbers at left
+    \@amsmath@leqnotrue
+    \@historyasfootnotetrue
+    \@keywordsasfootnotetrue
+    \@imslayouttrue
+    \@autosecdottrue
+    \@print@bid@doitrue
 }
 
 \DeclareOption{aos}{%
-   \def\journal@id{-aos}
-   \def\journal@name{Submitted to the  Annals of Statistics }
-   \def\journal@url{http://www.imstat.org/aos/}
-   \set@page@layout{30pc}{550pt}% 30pc * 46 line
-   \@twosidetrue
-   \input{leqno.clo}% formula numbers at left
-   \@amsmath@leqnotrue
-   \@historyasfootnotetrue
-   \@keywordsasfootnotetrue
-   \@addressatendtrue
-   \@imslayouttrue
-   \@autosecdottrue
+    \def\journal@id{-aos}
+    \def\journal@name{Submitted to the  Annals of Statistics }
+    \def\journal@url{http://www.imstat.org/aos/}
+    \set@page@layout{405bp}{646bp}%
+    \@twosidetrue
+    \input{leqno.clo}% formula numbers at left
+    \@amsmath@leqnotrue
+    \@historyasfootnotetrue
+    \@keywordsasfootnotetrue
+    \@imslayouttrue
+    \@autosecdottrue
+    \@print@bid@doitrue
 }
 
 \DeclareOption{aoas}{%
-   \def\journal@id{-aoas}
-   \def\journal@name{Submitted to the  Annals of Applied Statistics }
-   \def\journal@url{http://www.imstat.org/aoas/}
-   \set@page@layout{30pc}{550pt}% 30pc * 46 line
-   \@twosidetrue
-   \input{leqno.clo}% formula numbers at left
-   \@amsmath@leqnotrue
-   \@historyasfootnotetrue
-   \@keywordsasfootnotetrue
-   \@addressatendtrue
-   \@imslayouttrue
-   \@autosecdottrue
+    \def\journal@id{-aoas}
+    \def\journal@name{Submitted to the  Annals of Applied Statistics }
+    \def\journal@url{http://www.imstat.org/aoas/}
+    \set@page@layout{405bp}{646bp}%
+    \@twosidetrue
+    \input{leqno.clo}% formula numbers at left
+    \@amsmath@leqnotrue
+    \@historyasfootnotetrue
+    \@keywordsasfootnotetrue
+    \@imslayouttrue
+    \@autosecdottrue
+    \@print@bid@doitrue
 }
 
 
@@ -330,7 +334,7 @@
 }
 
 \newif\if@ssylayout \@ssylayoutfalse
-\DeclareOption{ssy}{%
+\DeclareOption{ssy}{% todo: remove
    \def\journal@id{-ssy}
    \def\journal@name{Stochastic Systems }
    \def\journal@url{http://www.i-journals.org/ssy/}
@@ -362,14 +366,15 @@
 \newif\if@imslayout \@imslayoutfalse
 
 \DeclareOption{imslayout}{
-   \def\journal@id{-imsgeneric}
-   \input{leqno.clo}% formula numbers at left
-   \@amsmath@leqnotrue
-   \@historyasfootnotetrue
-   \@keywordsasfootnotetrue
-   \@addressatendtrue
-   \@imslayouttrue
-   \@autosecdottrue}
+    \def\journal@id{-imsgeneric}
+    \input{leqno.clo}% formula numbers at left
+    \@amsmath@leqnotrue
+    \@historyasfootnotetrue
+    \@keywordsasfootnotetrue
+    \@imslayouttrue
+    \@autosecdottrue
+    \@print@bid@doitrue
+    }
 
 % IMS STS journal layout also specific
 \newif\if@stslayout \@stslayoutfalse
@@ -500,6 +505,10 @@
   \setlength\topmargin{0in}%
   }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% old ims and ims related layout
+\newif\if@old@layout \@old@layoutfalse
+\DeclareOption{oldlayout}{\@old@layouttrue}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Load imsart.cnf with additional options:
 \@input{\imsfmt@name.cnf}
 
@@ -507,6 +516,15 @@
 
 \ExecuteOptions{generic,infoline}
 \ProcessOptions
+
+\if@imslayout
+    \if@old@layout
+        \set@page@layout{30pc}{550pt}
+        \@addressatendtrue
+    \else
+        \AtEndOfPackage{\let\affiliation\@gobble}
+    \fi
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% dimensions
 
@@ -774,7 +792,24 @@
 \newcounter{emailref}
 \setvaluelist{emailmarks}{*,**,\textdagger,\textdaggerdbl}
 \def\theemailref{\getitemvalue{emailmarks}{\the\c@emailref}}
-\define@key{ead}{mark}[true]{\usethankscounter{emailref}\thankslabel{\ead@label}}
+\define@key{ead}{mark}[true]{%
+    \usethankscounter{emailref}%
+    \thankslabel{\ead@label}%
+    }
+
+\if@old@layout
+\else
+    \if@imslayout
+        \setvaluelist{emailmarks}{*,\textdagger,\textdaggerdbl,%
+            \textsection,\textparagraph,||,**,\textdagger\textdagger,%
+            \textdaggerdbl\textdaggerdbl
+            }
+        \define@key{ead}{mark}[true]{%
+            \csxdef{ead@\ead@label @mark}{\the\c@author}%
+            \csxdef{author@\the\c@author @ead@mark}{\ead@label}%
+            }
+    \fi
+\fi
 
 
 % naudojame keyval paketa
@@ -813,31 +848,91 @@
 \def\@printead{\@ifnextchar[{\@printead@opttrue\@@printead}{\@printead@optfalse\@@printead[]}}
 
 \def\@@printead[#1]#2{{%
-   \if@printead@opt%[]
-      \def\ims@href@text{#1}%
-      \not@ead@starfalse%
-   \fi%      
-   \let\prev@ead@text\relax%
-   \let\@ead@sep\relax%
-   \let\ead@text\relax%
-   \let\ead@prefix\relax%
-   \def\ead@type{}%
-   \@tempcnta=0%
-   \let\sv@ims@href\ims@href%
-   \printead@fmt{\@for\ead@ref:=#2\do{%
-       \advance\@tempcnta by1%
-       \let\ims@href\sv@ims@href%
-       \@ead@sep\let\@ead@sep\ead@sep%
-       \@ifundefined{r@\ead@ref @nopdflink}{}{\def\ims@href##1##2{##2}}%
-       \@ifundefined{r@\ead@ref @email}{}{\let\ead@text\email@text\def\ead@type{email}\def\ead@prefix{mailto:}}%
-       \@ifundefined{r@\ead@ref @url}{}{\let\ead@text\url@text\def\ead@type{url}\def\ead@prefix{http://}}%
-       \@ifundefined{r@\ead@ref @fullurl}{}{\let\ead@text\fullurl@text\def\ead@type{fullurl}\def\ead@prefix{}}%
-       \ifx\prev@ead@text\ead@text\let\ead@text\relax\fi%
-       \if@printead@opt\ifnum\@tempcnta>1\@latex@error{Command \@backslashchar printead[]{e1} could have only one parameter "e1"!}\@eha\fi%
-       \else\@ifundefined{r@\ead@ref @\ead@type text}{\def\ims@href@text{\@ifundefined{r@\ead@ref thanks}{}{\thanksref{\ead@ref}}\saferef{\ead@ref @\ead@type}}}{\def\ims@href@text{\@ifundefined{r@\ead@ref thanks}{}{\thanksref{\ead@ref}}\saferef{\ead@ref @\ead@type text}}}\fi%
-       \ifnot@ead@star\ead@text\fi{\ead@size\def\null{}\ims@href{\ead@prefix\saferef{\ead@ref @\ead@type}}{\ims@href@text}}%
-       \@ifundefined{ead@text}{}{\let\prev@ead@text\ead@text}}}%                        
-}}
+    \if@printead@opt%[]
+        \def\ims@href@text{#1}%
+        \not@ead@starfalse
+    \fi
+    \let\prev@ead@text\relax
+    \let\@ead@sep\relax
+    \let\ead@text\relax
+    \let\ead@prefix\relax
+    \def\ead@type{}%
+    \@tempcnta=0%
+    \let\sv@ims@href\ims@href
+    \printead@fmt{%
+        \@for\ead@ref:=#2\do{%
+            \advance\@tempcnta by 1%
+            \let\ims@href\sv@ims@href
+            \@ead@sep\let\@ead@sep\ead@sep
+            \@ifundefined{r@\ead@ref @nopdflink}%
+                {}%
+                {\def\ims@href##1##2{##2}}%
+            \@ifundefined{r@\ead@ref @email}%
+                {}%
+                {\let\ead@text\email@text\def\ead@type{email}\def\ead@prefix{mailto:}}%
+            \@ifundefined{r@\ead@ref @url}%
+                {}%
+                {\let\ead@text\url@text\def\ead@type{url}\def\ead@prefix{http://}}%
+            \@ifundefined{r@\ead@ref @fullurl}%
+                {}%
+                {\let\ead@text\fullurl@text\def\ead@type{fullurl}\def\ead@prefix{}}%
+            \ifx\prev@ead@text\ead@text
+                \let\ead@text\relax
+            \fi
+            \csname printead@hook\endcsname
+            \if@printead@opt
+                \ifnum\@tempcnta>1%
+                    \@latex@error{Command \@backslashchar printead[]{e1} 
+                        could have only one parameter "e1"!}\@eha
+                \fi
+            \else
+                \@ifundefined{r@\ead@ref @\ead@type text}%
+                    {%
+                        \def\ims@href@text{%
+                            \@ifundefined{r@\ead@ref thanks}%
+                                {}%
+                                {\thanksref{\ead@ref}}%
+                            \saferef{\ead@ref @\ead@type}%
+                            }%
+                    }%
+                    {%
+                        \def\ims@href@text{%
+                            \@ifundefined{r@\ead@ref thanks}%
+                                {}%
+                                {\thanksref{\ead@ref}}%
+                            \saferef{\ead@ref @\ead@type text}%
+                            }%
+                    }%
+            \fi%
+            \ifnot@ead@star
+                \ead@text
+            \fi
+            \bgroup
+                \ead@size\def\null{}%
+                \ims@href{\ead@prefix\saferef{\ead@ref @\ead@type}}{\ims@href@text}%
+            \egroup
+            \@ifundefined{ead@text}%
+                {}%
+                {\let\prev@ead@text\ead@text}%
+            }%
+        }%
+    }}
+
+\if@old@layout
+\else
+    \if@imslayout
+        \gdef\printead@hook{%
+            \@ifundefined{ead@\ead@ref @mark}%
+                {}%
+                {%
+                    \usethankscounter{emailref}%
+                    \thanksmark{\ead@ref}%
+                    \restorethankscounter
+                    \cslet{r@\ead@ref thanks}\relax
+                }%
+            }
+    \fi
+\fi
 
 
 
@@ -908,7 +1003,11 @@
 
 \let\@doi\relax
 
-\def\doi@base{http://dx.doi.org/}
+\if@old@layout
+    \def\doi@base{http://dx.doi.org/}
+\else
+    \def\doi@base{https://doi.org/}
+\fi
 
 \protected\def\relateddoi{\@ifnextchar[{\@tempswatrue\@relateddoi}{\@tempswafalse\@relateddoi[]}}
 \def\@relateddoi[#1]#2#3{\protect\ims@href{\doi@base#3}{#3}}%
@@ -1455,17 +1554,51 @@
 \def\author{\@ifnextchar[{\author@fmt}{\author@fmt[]}}
 
 \def\author@fmt[#1]#2{%
-  \stepcounter{author}%
-  \author@fmt@init%
-  \let\author@fmt@init\relax%
-  \bgroup% 
-     \def\degs##1{##1}\def\fnms##1{##1}\def\inits##1{##1}\def\snm##1{##1}\def\roles##1{##1}%
-     \@tempcnta=\author@num\relax%
-     \ifnum\c@author=\@tempcnta \def\author@sep{ and }\else \def\author@sep{, }\fi%
-     \ifnum\c@author=1\addto@authors@list{#2}\else\addto@authors@list{\author@sep #2}\fi%
-     \def\fnms##1{{\fnms@size{##1}}}\def\snm##1{\snm@size{##1}}%
-     \noindent#2\thanksref{#1}%
-  \egroup}
+    \stepcounter{author}%
+    \author@fmt@init%
+    \let\author@fmt@init\relax%
+    \bgroup% 
+        \def\degs##1{##1}%
+        \def\fnms##1{##1}%
+        \def\inits##1{##1}%
+        \def\snm##1{##1}%
+        \def\roles##1{##1}%
+        \@tempcnta=\author@num\relax
+        \ifnum\c@author=\@tempcnta
+            \def\author@sep{ and }%
+        \else
+            \def\author@sep{, }%
+        \fi%
+        \ifnum\c@author=1%
+            \addto@authors@list{#2}%
+        \else
+            \addto@authors@list{\author@sep #2}%
+        \fi
+        \def\fnms##1{{\fnms@size{##1}}}%
+        \def\snm##1{\snm@size{##1}}%
+        \noindent#2%
+        \if@old@layout
+            \thanksref{#1}%
+        \else
+            \if@imslayout
+                \@ifundefined{author@\the\c@author @ead@mark}%
+                    {}%
+                    {\edef\ead@label@mark{\csname author@\the\c@author @ead@mark\endcsname}}%
+                \ifx.#1.%
+                    \@ifundefined{author@\the\c@author @ead@mark}%
+                        {}%
+                        {\thanksref{\ead@label@mark}}%
+                \else
+                    \@ifundefined{author@\the\c@author @ead@mark}%
+                        {\thanksref{#1}}%
+                        {\thanksref{#1,\ead@label@mark}}%
+                \fi
+            \else
+                \thanksref{#1}%
+            \fi
+        \fi
+    \egroup
+    }
 
 \def\author@fmt@init{%
    \vskip\authors@skip%
@@ -1484,10 +1617,20 @@
 \def\address{\@ifnextchar[{\address@fmt}{\address@fmt[]}}
 
 \def\address@fmt[#1]#2{%
-  \smart@par%
-  \let\author@fmt@init\author@fmt@init@def
-  \vskip\address@skip%
-  {\address@style\address@size\leavevmode\ifx.#1.\else\usethankscounter{addressref}\thanksmark{#1}\restorethankscounter\fi#2\par}}
+    \smart@par%
+    \let\author@fmt@init\author@fmt@init@def
+    \vskip\address@skip%
+    \bgroup
+        \address@style\address@size\leavevmode
+        \ifx.#1.%
+        \else
+            \usethankscounter{addressref}%
+            \thanksmark{#1}%
+            \restorethankscounter
+        \fi
+        #2\par
+    \egroup
+    }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% AFFILIATION
 
@@ -2203,6 +2346,13 @@
             \leftmargin=\labelwidth
             \advance\leftmargin by \labelsep
             }
+        \if@old@layout
+        \else
+            \def\longlist@listii{%
+                \leftmargin=\labelwidth
+                \advance\leftmargin by \labelsep
+                }
+        \fi
         \def\@listii{%
             \leftmargin=\leftmarginii
             \listparindent=12\p@
@@ -2217,6 +2367,13 @@
             \leftmargin=\labelwidth
             \advance\leftmargin by \labelsep
             }
+        \if@old@layout
+        \else
+            \def\longlist@listiii{%
+                \leftmargin=\labelwidth
+                \advance\leftmargin by \labelsep
+                }
+        \fi
         \def\@listiii{%
             \leftmargin=\leftmarginiii
             \labelwidth=\leftmarginiii
@@ -2305,8 +2462,13 @@
         
         \setlength{\parskip}{\z@}
 
-        \setlength\marginparsep  {10\p@}
-        \setlength\marginparwidth{59\p@}
+        \if@old@layout
+            \setlength\marginparsep  {10\p@}
+            \setlength\marginparwidth{59\p@}
+        \else
+            \setlength\marginparsep  {25\p@}
+            \setlength\marginparwidth{120\p@}
+        \fi
 
         \def\frenchspacing{\sfcode`\.1006\sfcode`\?1005\sfcode`\!1004%
             \sfcode`\:1003\sfcode`\;1002\sfcode`\,1001 }
@@ -2339,8 +2501,20 @@
   \setpkgattr{title}      {size} {\normalsize\bfseries\mathversion{bold}\spaceskip.5em}
   \setpkgattr{author}     {size} {\normalsize\scshape}
   \setpkgattr{affiliation}{size} {\normalsize\itshape}
-  \setpkgattr{address}    {size} {\scriptsize\scshape}
-  \setpkgattr{ead}        {size} {\upshape}
+  \if@old@layout
+    \setpkgattr{address}    {size} {\scriptsize\scshape}
+    \setpkgattr{ead}        {size} {\upshape}
+    \setpkgattr{email}      {text} {E-mail: }
+  \else
+    \setpkgattr{abstract}   {skip} {14\p@}
+    \setpkgattr{address}    {skip} {8\p@}
+    \setpkgattr{address}    {size} {\scriptsize\itshape}
+    \setpkgattr{ead}        {size} {}
+    \setpkgattr{ead}        {sep}  {; }
+    \setpkgattr{email}      {text} {}
+    \setcounter{secnumdepth}{5}
+    \setcounter{tocdepth}{6}
+  \fi
   \setpkgattr{abstractname}{size}{\itshape}
   \setpkgattr{keywordname}{size} {\itshape}
   \setpkgattr{runninghead}{size} {\footnotesize}
@@ -2358,7 +2532,6 @@
                                     \@ifnonempty{\@copyrightyear\@volume\@issue\@pagerange\break}%
                                     \doi@text}
 
-  \setpkgattr{email}      {text} {E-mail: }
   \setpkgattr{url}        {text} {URL: }
   \setpkgattr{fullurl}    {text} {URL: }
   \def\volume#1{\gdef\@volume{Vol. #1, }}
@@ -3161,8 +3334,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% bid
 % \bid{MR={},doi={},...}
 
-\define@key{bid}{mr}{\MR{#1}}
-\define@key{bid}{doi}{}
+\if@print@bid@doi
+    \let\bid@mr@arg\@empty
+    \let\bid@doi@arg\@empty
+    \define@key{bid}{mr}{\edef\bid@mr@arg{#1}}
+    \define@key{bid}{doi}{\edef\bid@doi@arg{#1}}
+    \def\bid@MR#1{\ \MR{#1}\ignorespaces}
+    \def\bid@doiurl#1{\ \ims@href{\doi@base#1}{#1}\ignorespaces}
+\else
+    \define@key{bid}{mr}{\MR{#1}}
+    \define@key{bid}{doi}{}
+\fi
 \define@key{bid}{pubmed}{}
 \define@key{bid}{pmcid}{}
 \define@key{bid}{pmid}{}
@@ -3171,7 +3353,17 @@
 \define@key{bid}{pii}{}
 
 \def\bbl@bid#1{%
-       \setkeys{bid}{#1}%
+    \setkeys{bid}{#1}%
+    \if@print@bid@doi
+        \ifx\bid@mr@arg\@empty
+        \else
+            \expandafter\bid@MR\expandafter{\bid@mr@arg}%
+        \fi
+        \ifx\bid@doi@arg\@empty
+        \else
+            \expandafter\bid@doiurl\expandafter{\bid@doi@arg}%
+        \fi
+    \fi
 }
 
 % for compatibility with old bibtex style

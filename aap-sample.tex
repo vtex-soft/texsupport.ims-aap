@@ -1,4 +1,3 @@
-%% Additional documentclass options: ???
 \documentclass[aap,preprint]{imsart}
 
 %% Packages
@@ -19,7 +18,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
 %% For Axiom, Claim, Corollary, Hypothezis, %%
-%% Lemma, Theorem, Proposition, Fact        %%
+%% Lemma, Theorem, Proposition              %%
 %% use \theoremstyle{plain}                 %%
 %%                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -28,17 +27,17 @@
 \newtheorem{claim}[axiom]{Claim}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
-\newtheorem*{fact}{Fact}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
 %% For Assumption, Definition, Example,     %%
-%% Notation, Property, Remark               %%
+%% Notation, Property, Remark, Fact         %%
 %% use \theoremstyle{remark}                %%
 %%                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \theoremstyle{remark}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem*{example}{Example}
+\newtheorem*{fact}{Fact}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Please put your definitions here:        %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -49,62 +48,33 @@
 
 \begin{frontmatter}
 \title{A sample article title}
-%\title{A sample article title with some additional note\thanksref{T1}}
+%\title{A sample article title with some additional note\thanksref{t1}}
 \runtitle{A sample running head title}
 %\thankstext{T1}{A sample additional note to the title.}
 
 \begin{aug}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  \thanksref: only use m1,m2,m3,... when  %%
-%%  \thanksmark in \affiliation are used    %%
-%%  (see 'Affiliations')                    %%
+%%Only one address is permitted per author. %%
+%%Only division, organization and e-mail is %%
+%%included in the address.                  %%
+%%Additional information can be included in %%
+%%the Acknowledgments section if necessary. %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\author{\fnms{First} \snm{Author}\thanksref{m1,t1,t2}
-\ead[label=e1]{first@somewhere.com}},
-\author{\fnms{Second} \snm{Author}\thanksref{m1,m2,t3}
-\ead[label=e2]{second@somewhere.com}}
+\author[A]{\fnms{First} \snm{Author}\ead[label=e1]{first@somewhere.com}},
+\author[B]{\fnms{Second} \snm{Author}\ead[label=e2,mark]{second@somewhere.com}}
 \and
-\author{\fnms{Third} \snm{Author}\thanksref{m2,t1}
-\ead[label=e3]{third@somewhere.com}
-\ead[label=u1,url]{http://www.foo.com}}
+\author[B]{\fnms{Third} \snm{Author}\ead[label=e3,mark]{third@somewhere.com}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                Affiliations              %%
-%% Create unique \thanksmark for every      %%
-%% institution.                             %%
-%% EXCEPTION:                                %%
-%% 1. if there is only one institution      %%
-%% 2. if there are 1-3 authors and each     %%
-%%    of them has one unique institution    %%
-%% then no \thanksmark needed               %%
+%% Addresses                                %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\affiliation{Some University\thanksmark{m1}
-and Another University\thanksmark{m2}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                Addresses                 %%
-%% Please put authors' names at the         %%
-%% beginning of each address if there are    %%
-%% more than 2 authors                      %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\address{F. Author\\
-S. Author\\
-Department \\
-University or Company name\\
-City, Full US State Name and Zip Code\\
-Country\\
-\printead{e1}\\
-\phantom{\textsc{E-mail:\ }}\printead*{e2}}
+\address[A]{Department,
+University or Company Name,
+\printead{e1}}
 
-\address{T. Author\\
-Department\\
-University or Company Name\\
-City, Full US State Name and Zip Code\\
-Country\\
-\printead{e3}\\
-\printead{u1}}
+\address[B]{Department,
+University or Company Name,
+\printead{e2,e3}}
 \end{aug}
-\thankstext{t1}{Some comment.}
-\thankstext{t2}{Supported in part by NSF Grant DMS-??-?????.}
-\thankstext{t3}{Supported by second supporter of the project.}
 
 \begin{abstract}
 The abstract should summarize the contents of the paper.
@@ -121,14 +91,14 @@ your own.
 \end{abstract}
 
 \begin{keyword}[class=MSC2010]
-\kwd[Primary ]{60K35}
-\kwd{60K35}
-\kwd[; secondary ]{60K35}
+\kwd[Primary ]{00X00}
+\kwd{00X00}
+\kwd[; secondary ]{00X00}
 \end{keyword}
 
 \begin{keyword}
-\kwd{Sample}
-\kwd{\LaTeXe}
+\kwd{First keyword}
+\kwd{second keyword}
 \end{keyword}
 
 \end{frontmatter}
@@ -139,6 +109,7 @@ your own.
 %\tableofcontents
 
 \section{Introduction}
+
 This template helps you to create a properly formatted \LaTeXe\ manuscript.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% `\ ' is used here because TeX ignores    %%
@@ -181,29 +152,34 @@ This is the rest of the second item of the outer list.
 This is the third item of the list.
 \end{itemize}
 
+The following is an example of an \emph{enumerated} list of one level.
+
+\begin{longlist}
+\item This is the first item of an enumerated list.
+\item This is the second item of an enumerated list.
+\end{longlist}
 
 The following is an example of an \emph{enumerated} list, two levels deep.
-\begin{enumerate}
-\item
+\begin{longlist}
+\item[1.]
 This is the first item of an enumerated list.  Each item
 in the list is marked with a ``tick.''  The document
 style determines what kind of tick mark is used.
-\item
+\item[2.]
 This is the second item of the list.  It contains another
-list nested inside it.  The two inner lists are an \emph{enumerated}
-list.
-\begin{enumerate}
+list nested inside of it.
+\begin{longlist}
 \item
 This is the first item of an enumerated list that
-is nested within the enumerated list.
+is nested within.  
 \item
 This is the second item of the inner list.  \LaTeX\
 allows you to nest lists deeper than you really should.
-\end{enumerate}
+\end{longlist}
 This is the rest of the second item of the outer list.
-\item
+\item[3.]
 This is the third item of the list.
-\end{enumerate}
+\end{longlist}
 
 \subsection{Punctuation}
 Dashes come in three sizes: a hyphen, an intra-word dash like ``$U$-statistics'' or ``the time-homogeneous model'';
@@ -246,7 +222,7 @@ pose no problem.\footnote{Note that footnote number is after punctuation.}
 
 Text is displayed by indenting it from the left margin. There are short quotations
 \begin{quote}
-This is a short a quotation.  It consists of a
+This is a short quotation.  It consists of a
 single paragraph of text.  There is no paragraph
 indentation.
 \end{quote}
@@ -290,10 +266,6 @@ This is the body of Lemma \ref{le1}. Lemma \ref{le1} is numbered after
 Theorem \ref{th2} because we used \verb|[theorem]| in \verb|\newtheorem|.
 \end{lemma}
 
-\begin{fact}%Edgarai, Siga, reikia perklausti Patriko del to ar fact IMS bus italic ar roman. (K.V.)
-This is the body of the fact. Fact is unnumbered because we used \verb|\newtheorem*|
-instead of \verb|\newtheorem|.
-\end{fact}
 
 \begin{proof}[Proof of Lemma \ref{le1}] %Siga, pakeiciau {} i [] (K.V.)
 This is the body of the proof of Lemma \ref{le1}.
@@ -310,6 +282,10 @@ This is the body of the example. Example is unnumbered because we used \verb|\ne
 instead of \verb|\newtheorem|.
 \end{example}
 
+\begin{fact}
+This is the body of the fact. Fact is unnumbered because we used \verb|\newtheorem*|
+instead of \verb|\newtheorem|.
+\end{fact}
 
 \section{Tables and figures}
 Cross-references to labeled tables: As you can see in Table~\ref{sphericcase}
@@ -320,10 +296,10 @@ and also in Table~\ref{parset}.
 \label{sphericcase}
 \begin{tabular}{@{}lrrrrc@{}}
 \hline
-\textbf{Equil.} \\
-\textbf{points} & \multicolumn{1}{c}{$\boldsymbol{x}$}
-& \multicolumn{1}{c}{$\boldsymbol{y}$} & \multicolumn{1}{c}{$\boldsymbol{z}$}
-& \multicolumn{1}{c}{$\boldsymbol{C}$} & \textbf{S} \\
+Equil. \\
+points & \multicolumn{1}{c}{$x$}
+& \multicolumn{1}{c}{$y$} & \multicolumn{1}{c}{$z$}
+& \multicolumn{1}{c}{$C$} & S \\
 \hline
 $L_1$    & $-$2.485252241 & 0.000000000  & 0.017100631  & 8.230711648  & U \\
 $L_2$    & 0.000000000  & 0.000000000  & 3.068883732  & 0.000000000  & S \\
@@ -346,14 +322,14 @@ $L_{11}$ & 1.472523232  & $-$1.393484549 & $-$0.083801333 & 6.733436505  & U \\
 %
 \begin{tabular}{@{}lcrcrrr@{}}
 \hline
-&& & &\multicolumn{3}{c}{\textbf{Quantile}} \\
+&& & &\multicolumn{3}{c}{Quantile} \\
 \cline{5-7}
-\textbf{Model} &\textbf{Parameter} &
-\multicolumn{1}{c}{\textbf{Mean}} &
-\textbf{Std.dev.} &
-\multicolumn{1}{c}{\textbf{2.5\%}} &
-\multicolumn{1}{c}{\textbf{50\%}}&
-\multicolumn{1}{c@{}}{\textbf{97.5\%}} \\
+Model &Parameter &
+\multicolumn{1}{c}{Mean} &
+Std. dev.&
+\multicolumn{1}{c}{2.5\%} &
+\multicolumn{1}{c}{50\%}&
+\multicolumn{1}{c@{}}{97.5\%} \\
 \hline
 {Model 0} & $\beta_0$ & $-$12.29 & 2.29 & $-$18.04 & $-$11.99 & $-$8.56 \\
           & $\beta_1$  & 0.10   & 0.07 & $-$0.05  & 0.10   & 0.26  \\
@@ -395,16 +371,16 @@ Equation arrays:
   \frac{dS}{dt} & = & - \sigma X + s_{F} F,\\
   \frac{dX}{dt} & = &   \mu    X,\\
   \frac{dP}{dt} & = &   \pi    X - k_{h} P,\\
-  \frac{dV}{dt} & = &   F
+  \frac{dV}{dt} & = &   F.
 \end{eqnarray}
 One long equation:
 \begin{eqnarray}
  \mu_{\text{normal}} & = & \mu_{x} \frac{C_{s}}{K_{x}C_{x}+C_{s}}  \nonumber\\
-                     & = & \mu_{\text{normal}} - Y_{x/s}(1-H(C_{s}))(m_{s}+\pi /Y_{p/s}) \nonumber\\
-                     & = & \mu_{\text{normal}}/Y_{x/s}+ H(C_{s}) (m_{s}+ \pi /Y_{p/s}).
+                     & = & \mu_{\text{normal}} - Y_{x/s}\bigl(1-H(C_{s})\bigr)(m_{s}+\pi /Y_{p/s})\\
+                     & = & \mu_{\text{normal}}/Y_{x/s}+ H(C_{s}) (m_{s}+ \pi /Y_{p/s}).\nonumber
 \end{eqnarray}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Example with single Appendix:             %%
+%% Example with single Appendix:            %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{appendix}
 \section*{Title}\label{appn} %% if no title is needed, leave empty \section*{}.
@@ -434,8 +410,21 @@ Headings and other objects will be numbered automatically.
 Sample of cross-reference to the formula (\ref{path}) in Appendix \ref{appB}.
 \end{appendix}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Support information (funding), if any,   %%
+%% should be provided in the                %%
+%% Acknowledgements section.                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Acknowledgements}
-This is an acknowledgements section.
+The authors would like to thank the anonymous referees, an Associate
+Editor and the Editor for their constructive comments that improved the
+quality of this paper.
+
+The first author was supported by NSF Grant DMS-??-??????.
+
+The second author was supported in part by NIH Grant ???????????.
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Supplementary Material, if any, should   %%
 %% be provided in {supplement} environment  %%

@@ -3,7 +3,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% In this template, the places where you   %%
-%% to fill in your information are          %%
+%% need to fill in your information are     %%
 %% indicated by '???'.                      %%
 %%                                          %%
 %% Please do not use \input{...} to include %%
@@ -11,7 +11,7 @@
 %% manuscript as one .tex document.         %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[preprint,aap]{imsart}
+\documentclass[aap,preprint]{imsart}
 
 %% Packages
 \RequirePackage{amsthm,amsmath,amsfonts,amssymb}
@@ -31,10 +31,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
 %% For Axiom, Claim, Corollary, Hypothezis, %%
-%% Lemma, Theorem, Proposition, Fact        %%
-%% please uncomment \theoremstyle{plain}    %%
-%% and fill in \newtheorem macro,           %%
-%% e.g. \newtheorem{axiom}{Axiom}           %%
+%% Lemma, Theorem, Proposition              %%
+%% use \theoremstyle{plain}                 %%
 %%                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\theoremstyle{plain}
@@ -45,10 +43,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
 %% For Assumption, Definition, Example,     %%
-%% Notation, Property, Remark               %%
-%% please uncomment \theoremstyle{remark}   %%
-%% and fill in \newtheorem macro,           %%
-%% e.g. \newtheorem{assumption}{Assumption} %%
+%% Notation, Property, Remark, Fact         %%
+%% use \theoremstyle{remark}                %%
 %%                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\theoremstyle{remark}
@@ -73,52 +69,28 @@
 \title{???}
 %\title{A sample article title with some additional note\thanksref{T1}}
 \runtitle{???}
-%\thankstext{T1}{A sample additional note to the title.}
+%\thankstext{T1}{A sample of additional note to the title.}
 
 \begin{aug}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  \thanksref: only use m1,m2,m3,... when  %%
-%%  \thanksmark in \affiliation are used    %%
-%%  (see 'Affiliations')                    %%
+%%Only one address is permitted per author. %%
+%%Only division, organization and e-mail is %%
+%%included in the address.                  %%
+%%Additional information can be included in %%
+%%the Acknowledgments section if necessary. %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\author{\fnms{???} \snm{???}\thanksref{?}
-\ead[label=e1]{???@???}},
-\author{\fnms{???} \snm{???}\thanksref{??}
-\ead[label=e2]{???@???}}
+\author[A]{\fnms{???} \snm{???}\ead[label=e1]{???@???}},
+\author[B]{\fnms{???} \snm{???}\ead[label=e2,mark]{???@???}}
 \and
-\author{\fnms{???} \snm{???}\thanksref{?,??}
-\ead[label=e3]{???@???}
-\ead[label=u3,url]{https://???}}
+\author[B]{\fnms{???} \snm{???}\ead[label=e3,mark]{???@???}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                Affiliations              %%
-%% Create unique \thanksmark for every      %%
-%% institution.                             %%
-%% EXCEPTION:                                %%
-%% 1. if there is only one institution      %%
-%% 2. if there are 1-3 authors and each     %%
-%%    of them has one unique institution    %%
-%% then no \thanksmark needed               %%
+%% Addresses                                %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\affiliation{???}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                Addresses                 %%
-%% Please put authors' names at the         %%
-%% beginning of each address if there are    %%
-%% more than 2 authors                      %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\address{???%\\
-%\printead{e1}\\
-%\phantom{\textsc{E-mail:\ }}\printead*{e2}
-}
+\address[A]{???, \printead{e1}}
 
-\address{???%\\
-%\printead{e3}\\
-%\printead{u3}
-}
+\address[B]{???, \printead{e2,e3}}
+%                \printead{u3}
 \end{aug}
-\thankstext{?}{???.}
-%\thankstext{??}{Supported in part by NSF Grant DMS-??-?????.}
-%\thankstext{???}{Supported by second supporter of the project.}
 
 \begin{abstract}
 ???.
@@ -142,7 +114,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\tableofcontents
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Main text entry area:
 
 
@@ -161,8 +133,19 @@
 %\section{???}
 %
 %\end{appendix}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Support information (funding), if any,   %%
+%% should be provided in the                %%
+%% Acknowledgements section.                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section*{Acknowledgements}
+% The authors would like to thank ...
+% 
+% The first author was supported by ...
+% 
+% The second author was supported in part by ...
+ 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Supplementary Material, if any, should   %%
 %% be provided in {supplement} environment  %%
